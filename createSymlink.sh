@@ -12,9 +12,10 @@ do
 		fi
 		for d in $dir/*
 		do
-			echo $PWD/$d $HOME/$d
+			ln -s  $PWD/$d $HOME/$d
 		done
 	else
-		echo $PWD/$dir $HOME/$dir
+
+		ln -s $PWD/$dir $HOME/$dir
 	fi
 done
