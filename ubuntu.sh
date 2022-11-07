@@ -15,7 +15,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 source ~/.zshrc
 
-#sh createSymlink.sh
+sh createSymlink.sh
 nvm install 16.18.1
 nvm use 16.18.1
 
