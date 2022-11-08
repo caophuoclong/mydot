@@ -6,7 +6,7 @@
 (defpoll HOST :interval "5s" `hostname`)
 (defpoll CPU_USAGE :interval "1s" `scripts/dashboard/system --cpu`)
 (defpoll MEM_USAGE :interval "1s" `scripts/dashboard/system --mem`)
-(defpoll GPU :interval "1s" `scripts/dashboard/system --gpu`)
+;;(defpoll GPU :interval "1s" `scripts/dashboard/system --gpu`)
 (defpoll STORAGE :interval "5s" `scripts/dashboard/system --storage`)
 (defpoll TEXT_RAM :interval "1s" `psuinfo -Im | awk 'FNR == 2'`)
 
@@ -20,8 +20,8 @@
 (defpoll pp-icon :interval "1s"  "scripts/dashboard/get-title --icon")
 
 ;; profile
-(defvar image "images/dashboard/profile.png")
-(defvar name "Sahil Nihalani")
+(defvar image "images/dashboard/profile.jpg")
+(defvar name "Phuoc Long")
 (defpoll username :interval "10h" `whoami`)
 (defpoll hostname :interval "10h" `hostnamectl | grep Static | awk '{print $3}'`)
 
@@ -72,10 +72,10 @@
         (label :class "iconmem" :text "")
         (scale :min 0 :max 100 :value MEM_USAGE :active "false")
         (label :class "text-ram" :text "${MEM_USAGE}%"))
-      (box :class "gpu_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
-        (label :class "icongpu" :text "")
-        (scale :min 0 :max 100 :value GPU :active "false")
-        (label :class "text-gpu" :text "${GPU}%"))
+      ;;(box :class "gpu_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+        ;;(label :class "icongpu" :text "")
+        ;;(scale :min 0 :max 100 :value GPU :active "false")
+       ;; (label :class "text-gpu" :text "${GPU}%"))
       (box :class "stor_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
         (label :class "iconstor" :text "")
         (scale :min 0 :max 100 :value STORAGE :active "false")
@@ -148,20 +148,20 @@
 (defwidget links []
   (box :orientation "v" :space-evenly "false" :class "genwin" :spacing 10
     (box :orientation "h" :space-evenly "false" :class "links" :vexpand "false" :hexpand "false" :valign "center" :spacing 20
-      (button :tooltip "Open Reddit" :style "background-image :url('images/dashboard/reddit.svg');" :class "reddit" :onclick "firefox https://reddit.com")
-      (button :tooltip "Open Github" :style "background-image :url('images/dashboard/github.svg');" :class "github" :onclick "firefox https://github.com")
-      (button :tooltip "Open Youtube" :style "background-image :url('images/dashboard/youtube.svg');" :class "youtube" :onclick "firefox https://youtube.com"))
+      (button :tooltip "Open Reddit" :style "background-image :url('images/dashboard/reddit.svg');" :class "reddit" :onclick "google-chrome-stable https://reddit.com")
+      (button :tooltip "Open Github" :style "background-image :url('images/dashboard/github.svg');" :class "github" :onclick "google-chrome-stable https://github.com")
+      (button :tooltip "Open Youtube" :style "background-image :url('images/dashboard/youtube.svg');" :class "youtube" :onclick "google-chrome-stable https://youtube.com"))
     (box :orientation "h" :space-evenly "false" :class "links" :vexpand "false" :hexpand "false" :valign "center" :spacing 20
-      (button :tooltip "Open PhysicsWallah" :style "background-image :url('images/dashboard/study.svg');" :class "study" :onclick "firefox https://pw.live/study")
-      (button :tooltip "Open GMail" :style "background-image :url('images/dashboard/gmail.svg');" :class "gmail" :onclick "firefox https://gmail.com")
-      (button :tooltip "Open Dribble" :style "background-image :url('images/dashboard/dribble.svg');" :class "dribble" :onclick "firefox https://dribble.com"))))
+      (button :tooltip "Open PhysicsWallah" :style "background-image :url('images/dashboard/study.svg');" :class "study" :onclick "google-chrome-stable https://pw.live/study")
+      (button :tooltip "Open GMail" :style "background-image :url('images/dashboard/gmail.svg');" :class "gmail" :onclick "google-chrome-stable https://gmail.com")
+      (button :tooltip "Open Dribble" :style "background-image :url('images/dashboard/dribble.svg');" :class "dribble" :onclick "google-chrome-stable https://dribble.com"))))
 
 ;; profile
 (defwidget profile []
   (box :class "genwin" :orientation "v" :spacing 10 :space-evenly "false" :vexpand "false" :hexpand "false"
     (box :style "background-image: url('${image}');" :class "face" :halign "center")
     (label :class "name" :halign "center" :wrap "true" :limit-width 25 :text name)
-    (label :class "username" :halign "center" :wrap "true" :limit-width 25 :text "Keanu Christ")
+    (label :class "username" :halign "center" :wrap "true" :limit-width 25 :text "Shogouzz")
     (label :class "username-hostname" :halign "center" :text "${username}@${hostname}")))
 
 ;; clock
@@ -195,17 +195,17 @@
 (defwidget mail []
   (box :class "mail"
     (box :orientation "h" :halign "center" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
-      (button :class "iconmail" :onclick "firefox https://gmail.com" "")
+      (button :class "iconmail" :onclick "google-chrome-stable https://gmail.com" "")
       (box :class "mailbox" :space-evenly "false" :vexpand "false" :hexpand "false"
-        (button :class "label_mails" :onclick "firefox https://gmail.com" mails)))))
+        (button :class "label_mails" :onclick "google-chrome-stable https://gmail.com" mails)))))
 
 ;; karma
 (defwidget karma []
   (box :class "karma"
     (box :orientation "h" :halign "center" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
-      (button :class "iconreddit" :onclick "firefox https://reddit.com" "")
+      (button :class "iconreddit" :onclick "google-chrome-stable https://reddit.com" "")
       (box :class "redditbox" :space-evenly "false" :vexpand "false" :hexpand "false"
-        (button :class "label_karma" :onclick "firefox https://reddit.com" reddit)))))
+        (button :class "label_karma" :onclick "google-chrome-stable https://reddit.com" reddit)))))
 
 ;;volume slider
 (defwidget volume-slider []
@@ -218,8 +218,8 @@
       :max 101
       :min 0
       :flipped true
-    :onchange "amixer set Master {}%")
-    (button :onclick "amixer set Master toggle" :class "dashboard-volume-slider-icon" "${volume}")))
+    :onchange "amixer -c 1 sset Master {}%")
+    (button :onclick "amixer -c 1 sset Master toggle" :class "dashboard-volume-slider-icon" "${volume}")))
 
 ;; brightness
 (defwidget brightness-slider []
@@ -229,16 +229,16 @@
       :orientation "v"
       :height 320
       :active true
-      :max 101
+      :max 255
       :min 0
       :flipped true
-    :onchange "light -S {}")
+    :onchange "brightnessctl s {}")
     (label :class "dashboard-brightness-slider-icon" :text {brightness.icon})))
 
 ;; quote
 (defwidget quote []
   (box :orientation "v" :space-evenly "false" :class "quote-box"
-    (label :class "quote-image" :halign "center" :text "")
+    (label :class "quote-image" :halign "center" :text "26")
     (label :class "quote" :halign "center" :xalign "0.5" :text {quote} :wrap "true")))
 
 ;;battery
@@ -261,91 +261,91 @@
 ; ========================================================================
 
 ;; background
-(defwindow background :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow background :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 0 :y 0 :width "1920px" :height "1080px")
   (bg))
 
 ;; system
-(defwindow system :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow system :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 965 :y 700 :width 300 :height 283)
   (system))
 ;; fetch
-(defwindow fetch :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow fetch :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 1290 :y 507 :width 305 :height 200)
   (fetch))
 ;; dots
-(defwindow dots :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow dots :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 1290 :y 755 :width 305 :height 55)
   (dots))
 ;; spotify
-(defwindow spotify :stacking "fg" :monitor 0 :screen 1
+(defwindow spotify :stacking "fg" :monitor 1 :screen 1
   :geometry (geometry :x 460 :y 777 :width 477 :height 207)
   (spotify))
 ;; power
-(defwindow power :stacking "fg" :monitor 0 :screen 1
+(defwindow power :stacking "fg" :monitor 1 :screen 1
   :geometry (geometry :x 1290 :y 840 :width 305 :height 70)
   (power))
 
 ;; apps
-(defwindow applications :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow applications :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 300 :y 507 :width 100 :height 140)
   (applications))
 
 ;; links
-(defwindow links :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow links :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 965 :y 507 :width 300 :height 160)
   (links))
 
 ;; profile
-(defwindow profile :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow profile :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 300 :y 100 :width 350 :height 380)
   (profile))
 
 ;; clock
-(defwindow clock :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow clock :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 675 :y 100 :width 400 :height 120)
   (clock))
 
 ;; weather
-(defwindow weather :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow weather :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 675 :y 245 :width 400 :height 235)
   (weather))
 
 ;; bluetooth
-(defwindow bluetooth :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow bluetooth :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 1097 :y 360 :width 327 :height 119)
   (bluetooth))
 
 ;; mail
-(defwindow mail :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow mail :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 1097 :y 230 :width 327 :height 106)
   (mail))
 
 ;; karma
-(defwindow karma :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow karma :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 1097 :y 100 :width 327 :height 106)
   (karma))
 
 ;; volume-slider
-(defwindow volume-slider :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow volume-slider :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 1450 :y 97 :width 60 :height 382)
   (volume-slider))
 
 ;;brightness-stuff
-(defwindow brightness-slider :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow brightness-slider :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 1535 :y 97 :width 60 :height 382)
   (brightness-slider))
 
 ;; quote
-(defwindow quote :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow quote :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 460 :y 507 :width 350 :height 235)
   (quote))
 
 ;; battery
-(defwindow battery :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow battery :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 820 :y 507)
   (battery))
 
-(defwindow close :stacking "fg" :monitor 0 :focusable "false" :screen 1
+(defwindow close :stacking "fg" :monitor 1 :focusable "false" :screen 1
   :geometry (geometry :x 1800 :y 20 :width 90 :height 90)
   (close))

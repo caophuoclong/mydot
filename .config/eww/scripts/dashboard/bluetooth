@@ -29,7 +29,7 @@ get_name() {
         # on
         if [ $(echo info | bluetoothctl | grep 'Device' | wc -c) -eq 0 ]
         then
-            echo "Bluetooth Idle"
+            echo "Idle"
             # connected
         else
             echo ${DEVICE}

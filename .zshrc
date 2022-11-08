@@ -10,7 +10,7 @@ if [ -d "$HOME/.local/bin" ] ;
 fi
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.config/zsh/zhistory
+HISTFILE=~/.zsh/zhistory
 HISTSIZE=5000
 SAVEHIST=5000
 bindkey -v
@@ -115,5 +115,5 @@ alias ll='lsd -la --group-directories-first'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+source ~/dotfiles/exportENV.sh
 #~/.local/bin/colorscript -e 3

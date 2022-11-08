@@ -6,12 +6,12 @@ CFG="$HOME/.config/eww/"
 EWW=`which eww`
 
 close_eww() {
-	${EWW} close system fetch dots spotify power applications
+	${EWW} close-all
 	rm -rf "$FILE"
 }
 
 if [[ "$1" == "--firefox" ]]; then
-	close_eww && firefox &
+	close_eww && google-chrome-stable &
 
 elif [[ "$1" == "--alacritty" ]]; then
 	close_eww && alacritty &

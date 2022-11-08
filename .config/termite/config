@@ -1,5 +1,5 @@
 [options]
-font = JetBrainsMono Nerd Font Bold 10
+font = JetBrainsMono Nerd Font Bold 16
 allow_bold = true
 bold_is_bright = true
 
@@ -66,3 +66,7 @@ color14 = #ebbcba
 # White
 color7 = #faebd7
 color15 = #e0def4
+
+[hints]
+
+padding = 10

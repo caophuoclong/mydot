@@ -4,13 +4,15 @@ q:q
 :qa!
 # wm independent hotkeys
 #
-
+# run zfetch
+super + shift + z
+	termite --hold -t sysfetch -e $HOME/.local/bin/sysfetch & disown
 # terminal emulator
 super + Return
 	termite
 # program launcher
 super + @space
-	rofi -show drun
+	rofi -theme ~/.config/rofi/launcher.rasi -show drun -hover-select -me-select-entry '' -me-accept-entry MousePrimary
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -163,7 +165,7 @@ ctrl + Print
 
 # Volume Up
 XF86AudioRaiseVolume
-  amixer sset Master 5%+ && $HOME/.config/eww/Misc/scripts/volume
+  amixer -c 1 sset Master 5%+ && $HOME/.config/eww/Misc/scripts/volume
 
 # Volume Down
 XF86AudioLowerVolume
@@ -171,7 +173,7 @@ XF86AudioLowerVolume
 
 # Volume Mute
 XF86AudioMute
-  amixer -c 1 sset Master toggle && $HOME/.config/eww/Misc/scripts/volume
+	pamixer --toggle-mute   toggle && $HOME/.config/eww/Misc/scripts/volume
 
 # Brightness Up
 XF86MonBrightnessUp

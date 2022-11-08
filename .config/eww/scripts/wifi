@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
-STATUS=$(nmcli | grep wlp4s0 | awk 'FNR==1' | awk '{print $2}')
+ETHERNET="eno1"
+WIFI="wlp4s0"
+STATUS=$(nmcli | grep $WIFI | awk 'FNR==1' | awk '{print $2}')
+
+interface=$WIFI
+# if wifi disconnnected check ethernet
+if [ "$STATUS" = "disconnected" ]; then
+    STATUS=$(nmcli | grep $ETHERNET | awk 'FNR==1' | awk '{print $2}')
+    interface=$ETHERNET
+fi
 SSID=$(iwgetid | awk -F '"' '{ print $2 }')
 STRENGTH=$(awk 'NR==3 {printf("%.0f",$3*10/7)}' /proc/net/wireless)
-
 toggle() {
     if [[ $STATUS == "connected" ]]; then
         nmcli radio wifi off
@@ -14,22 +22,35 @@ toggle() {
 }
 
 icon() {
-    if [[ "$STRENGTH" -ge "75" ]]; then
-        echo ""
-    elif [[ "$STRENGTH" -ge "50" ]]; then
-        echo ""
-    elif [[ "$STRENGTH" -ge "25" ]]; then
-        echo ""
-    elif [[ "$STRENGTH" -ge "0" ]]; then
-        echo ""
+    if [[ $STATUS == "connected" ]]; then
+        if [[ $interface == $WIFI ]];
+        then
+            if [[ "$STRENGTH" -ge "75" ]]; then
+                echo ""
+            elif [[ "$STRENGTH" -ge "50" ]]; then
+                 echo ""
+            elif [[ "$STRENGTH" -ge "25" ]]; then
+                echo ""
+            elif [[ "$STRENGTH" -ge "0" ]]; then
+                echo ""
+            else
+                echo ""
+            fi
+        else
+            echo ""
+        fi
     else
-        echo ""
+        echo ""
     fi
 }
 
 status() {
     if [[ $STATUS == "connected" ]]; then
+        if [[ $interface == $WIFI ]];then
         echo "$SSID"
+        else
+        echo "Ethernet"
+        fi
     else
         echo Disconnected
     fi

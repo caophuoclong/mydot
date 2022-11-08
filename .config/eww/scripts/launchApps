@@ -12,7 +12,7 @@ fi
 
 if [[ $1 == "--network" ]]; then
     cd || return
-    networkmanager_dmenu
+    termite --hold -t nmtui -e nmtui
 fi
 
 if [[ $1 == "--volume" ]]; then
@@ -22,7 +22,7 @@ fi
 
 if [[ $1 == "--bluetooth" ]]; then
     cd || return
-    blueberry
+    termite --hold -t bluetuith -e bluetuith & disown
 fi
 
 if [[ $1 == "--workspaces" ]]; then

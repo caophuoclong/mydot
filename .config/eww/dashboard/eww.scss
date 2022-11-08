@@ -358,6 +358,7 @@ scale trough highlight {
 
 /** Profile ******************************************/
 .face {
+        background-repeat: no-repeat;
         background-size: 150px;
         min-height: 150px;
         min-width: 150px;
@@ -401,7 +402,7 @@ scale trough highlight {
 
 /** Weather ***************************************/
 .iconweather {
-        font-family: "Phosphor";
+        font-family: "Font Awesome 6 Free";
         font-size: 40px;
         font-weight: normal;
 }
