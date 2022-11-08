@@ -13,9 +13,9 @@ git config --global user.name 'caophuoclong'
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+sh createSymlink.sh
 source ~/.zshrc
 
-sh createSymlink.sh
 nvm install 16.18.1
 nvm use 16.18.1
 

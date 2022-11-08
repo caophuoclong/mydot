@@ -4,7 +4,7 @@ level=''
 icon=''
 
 function fetch() {
-    level=$(echo "$(brightnessctl g)/1" | bc)
+    level=$(echo "$(brightnessctl g)" | bc)
     if [ "$level" -le 100 ]; then
         icon=
     elif [ "$level" -le 50 ]; then
@@ -20,6 +20,7 @@ function subscribe() {
     while sleep 0.1; do
         fetch
         new="$level"
+	echo $new
         if [ "$new" -gt "$old" ]; then
             old=$new
         elif [ "$new" -lt "$old" ]; then

@@ -89,7 +89,7 @@
           :marks true
           :max 100
           :min 0
-        :onchange "amixer sset Master {}%")
+        :onchange "amixer -c 1 sset Master {}%")
         (button :onclick "eww close system-menu && scripts/launchApps --volume" :class "volume-slider-button" ""))
       (box :orientation "h" :class "brightness-slider-stuff" :space-evenly "false"
         (button :class "brightness-slider-icon" {brightness.icon})
