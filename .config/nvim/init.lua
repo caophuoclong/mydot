@@ -1,23 +1,13 @@
-local g = vim.g
-
-g.mapleader = ","
-
-require("globals")
-require("utils")
-require("plugins.barbar")
-require("options")
 require("plugins")
+require("pluginConfig.catppuccin")
+require("pluginConfig.lsp")
+require("pluginConfig.nvimtree")
+require("pluginConfig.lualine")
+require("pluginConfig.cmp")
+require("pluginConfig.null-ls")
+require("pluginConfig.comment")
 
--- goolord/alpha-nvim
-require("alpha").setup(require("alpha.themes.startify").opts)
-
--- lewis6991/gitsigns.nvim
-require("gitsigns").setup({})
-
--- neovim/nvim-lspconfig
-require("lspconf")
-
--- vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
-
-require("keymaps")
-require("autocmds")
+require("core.colorscheme")
+require("core.options")
+require("core.autocmd")
+require("core.keybindings")

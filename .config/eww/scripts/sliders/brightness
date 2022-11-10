@@ -5,7 +5,9 @@ icon=''
 
 function fetch() {
     level=$(echo "$(brightnessctl g)" | bc)
-    if [ "$level" -le 100 ]; then
+    if [ "$level" -le 255 ];then
+        icon=
+    elif [ "$level" -le 100 ]; then
         icon=
     elif [ "$level" -le 50 ]; then
         icon=

@@ -28,7 +28,7 @@
 (defpoll battery-class :interval "1s" "scripts/battery -c")
 
 ;; for sliders
-(defpoll volume-slider-value :interval "500ms" "scripts/sliders/volume-slider --value")
+(defpoll volume-slider-value :interval "10ms" "scripts/sliders/volume-slider --value")
 (deflisten volume "scripts/bar/volume --icon")
 (deflisten brightness "scripts/sliders/brightness")
 
@@ -89,10 +89,10 @@
           :marks true
           :max 100
           :min 0
-        :onchange "amixer -c 1 sset Master {}%")
+        :onchange "pamixer --set-volume {}")
         (button :onclick "eww close system-menu && scripts/launchApps --volume" :class "volume-slider-button" ""))
       (box :orientation "h" :class "brightness-slider-stuff" :space-evenly "false"
-        (button :class "brightness-slider-icon" {brightness.icon})
+        (button :style "font-family: 'Font Awesome 6 Free';" :class "brightness-slider-icon"  {brightness.icon})
         (scale :class "brightness-slider"
           :orientation "h"
           :max 255

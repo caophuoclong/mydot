@@ -165,11 +165,11 @@ ctrl + Print
 
 # Volume Up
 XF86AudioRaiseVolume
-  amixer -c 1 sset Master 5%+ && $HOME/.config/eww/Misc/scripts/volume
+  pamixer -i 5 && $HOME/.config/eww/Misc/scripts/volume
 
 # Volume Down
 XF86AudioLowerVolume
-  amixer -c 1 sset Master 5%- && $HOME/.config/eww/Misc/scripts/volume
+  pamixer -d 5  && $HOME/.config/eww/Misc/scripts/volume
 
 # Volume Mute
 XF86AudioMute

@@ -117,3 +117,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source ~/dotfiles/exportENV.sh
 #~/.local/bin/colorscript -e 3
+alias devFrontend='code /home/phuoclong/Code/ChatApp/frontend/frontend'
+alias devBackend="code /home/phuoclong/Code/ChatApp/backend/backend"
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+export DENO_INSTALL="/home/phuoclong/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-vol=$(amixer -c 1 sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {sub(/%/, ""); printf "%0.0f\n", $2}')
+# vol=$(pamixer --get--volume| awk -F'[][]' '/Right:|Mono:/ && NF > 1 {sub(/%/, ""); printf "%0.0f\n", $2}')
+vol=$(pamixer --get-volume)
 echo $vol
