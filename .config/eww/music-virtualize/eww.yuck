@@ -1,0 +1,41 @@
+(deflisten cava "$HOME/.config/eww/music-virtualize/scripts/cava.sh")
+(defwidget cava []
+ (label :vexpand "false" :hexpand "false" :space-evenly "false"
+ :class "cavabar"
+ :max-width 20
+ :text cava
+ :halign "start"
+  ))
+(defwidget name []
+      (
+        label
+        :limit-width 50
+        :class "music-virtualize-player-title"
+        :text player-title
+      )
+)
+(defwidget slider[]
+(box :orientation "h" :class "music-virtualize-volume" :space-evenly "false" :halign "end"
+        (button :onclick "amixer set Master toggle" :class "volume-slider-icon" volume)
+        (scale :class "volume-slider"
+          :value volume-slider-value
+          :orientation "h"
+          :width 200
+          :marks true
+          :max 100
+          :min 0
+        :onchange "pamixer --set-volume {}")
+)
+)
+(defwidget music-virtualize []
+    (box :class "music-virtualize-box" 
+    (cava)
+    (name)
+    (slider)
+    )
+)
+
+(defwindow music-virtualize :stacking "bg"
+  :wm-ignore false
+  :geometry (geometry :y "-5px" :width "98%" :height "3%" :anchor "center bottom")
+  (music-virtualize))

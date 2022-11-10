@@ -27,6 +27,8 @@ bspc config border_radius	15
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
+bspc config top_padding 70
+bspc config bottom_padding 25
 bspc config gapless_monocle      true
 # bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
 # bspc rule -a Peek state=floating
@@ -45,3 +47,4 @@ bspc rule -a "1Password" state=floating center=true rectangle=1200x900+0+0
 # # bspc rule for zfetch floating, centered, 1920x1080
 # # bspc rule -a zfetch state=floating layer=below sticky=true locked=true border=off focus=off center=true follow=off rectangle=1920x1080+0+0
 xrandr --output HDMI-1 --auto --primary --output eDP-1 --auto
+# eww open music-virtualize -c ~/dotfiles/.config/eww

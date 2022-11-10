@@ -134,6 +134,6 @@
 
 ;; windows
 (defwindow system-menu :stacking "fg"
-  :wm-ignore true
+  :wm-ignore false
   :geometry (geometry :x -20 :y 95 :width "25%" :height "30%" :anchor "right top")
   (system-menu))

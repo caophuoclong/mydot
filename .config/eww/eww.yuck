@@ -2,3 +2,4 @@
 (include "./notifications/eww.yuck")
 (include "./system-menu/eww.yuck")
 (include "./dashboard/eww.yuck")
+(include "./music-virtualize/eww.yuck")
